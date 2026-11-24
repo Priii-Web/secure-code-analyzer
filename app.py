@@ -5,7 +5,7 @@ from report.report import gerar_relatorio, salvar_relatorio
 def analisar_arquivo(caminho_arquivo):
     rule = VerifyFalseRule()
     findings = []
-    # requests.get(url, verify=False)
+    
 
 with open(caminho_arquivo,"r") as arquivo:
     for numero_linha, linha in enumerate(arquivo, start=1):
