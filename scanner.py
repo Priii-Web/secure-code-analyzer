@@ -1,6 +1,7 @@
 from models.finding import Finding
 from rules.verify_false import VerifyFalseRule
 from report.report import gerar_relatorio, salvar_relatorio
+import sys
 
 
 def analisar_arquivo(caminho_arquivo):
@@ -36,3 +37,10 @@ if __name__ == "__main__":
 
     relatorio = gerar_relatorio(findings)
     salvar_relatorio(relatorio)
+
+    if findings:
+        print("Security Gate: BLOCKED")
+        sys.exit(1)
+
+    print("Security Gate: PASSED")
+    sys.exit(0)    

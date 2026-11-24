@@ -27,3 +27,6 @@ jobs:
       - name: Run tests
         run: python -m pytest
 
+      - name: Run security gate
+        run: python scanner.py
+
