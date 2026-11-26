@@ -1,7 +1,8 @@
+import sys
+
 from models.finding import Finding
 from rules.verify_false import VerifyFalseRule
 from report.report import gerar_relatorio, salvar_relatorio
-import sys
 
 
 def analisar_arquivo(caminho_arquivo):
@@ -38,9 +39,23 @@ if __name__ == "__main__":
     relatorio = gerar_relatorio(findings)
     salvar_relatorio(relatorio)
 
+    print("\n=== SECURITY SCAN RESULTS ===")
+    print(f"Findings detected: {len(findings)}")
+
+    for finding in findings:
+        print(f"\nRule: {finding.rule_id}")
+        print(f"Title: {finding.titulo}")
+        print(f"CWE: {finding.cwe}")
+        print(f"File: {finding.arquivo}")
+        print(f"Line: {finding.linha}")
+        print(f"Message: {finding.mensagem}")
+        print(f"Impact: {finding.impacto}")
+        print(f"Recommendation: {finding.recomendacao}")
+        print(f"Snippet: {finding.snippet}")
+
     if findings:
-        print("Security Gate: BLOCKED")
+        print("\nSecurity Gate: BLOCKED")
         sys.exit(1)
 
-    print("Security Gate: PASSED")
-    sys.exit(0)    
+    print("\nSecurity Gate: PASSED")
+    sys.exit(0)
